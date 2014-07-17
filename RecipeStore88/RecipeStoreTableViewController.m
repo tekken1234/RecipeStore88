@@ -39,4 +39,19 @@
     return [recipes count];
 }
 
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    static NSString *CellIdentifier = @"Cell";
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
+    NSManagedObjectContext *recipe = [recipes objectAtIndex:indexPath.row];
+    
+    cell.textLabel.text = [recipe valueForKey:@"name"];
+    
+    NSString *description = [[NSString alloc]initWithFormat:@"%@ - %@", [recipe valueForKey:@"image"],
+                             [recipe valueForKey:@"prepTime"]];
+    
+    cell.detailTextLabel.text = description;
+    
+    return cell;
+}
 @end
