@@ -30,4 +30,13 @@
     
     [self.tableView reloadData];
 }
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+    return 1;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return [recipes count];
+}
+
 @end
